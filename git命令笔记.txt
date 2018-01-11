@@ -1,0 +1,38 @@
+1.git init    初始化一个Git仓库；
+2.git add file1.txt 把文件提交到暂存区 注意，可反复多次使用，添加多个文件；
+3.git commit -m "add 3 files." 把文件提交本地版本库；
+4.git status  此命令可以让我们时刻掌握仓库当前的状态；
+5.git diff readme.txt  查看文件具体修改的内容；
+6.git log 可以查看提交历史，以便确定要回退到哪个版本。命令显示从最近到最远的提交日志，如果嫌输出信息太多，看得眼花缭乱的，可以git log --pretty=oneline；
+7.git reset --hard HEAD^ 回退版本，上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。
+8.git reset --hard 3628164 根据commit id回到未来的某个版本；
+9.git reflog 查看命令历史，以便确定要回到未来的哪个版本。
+10.git diff HEAD -- readme.txt 此命令可以查看工作区和版本库里面最新版本的区别：
+11.git checkout -- file 可以丢弃工作区的修改；
+12.git reset HEAD file  可以把暂存区的修改撤销掉（unstage），重新放回工作区，git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。
+13.git rm test.txt  用于删除一个文件；
+14.git checkout -- test.txt  其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。
+15. 要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；
+
+	关联后，使用命令git push -u origin master第一次推送master分支的所有内容；
+
+	此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；
+16.git checkout -b dev  我们创建dev分支，然后切换到dev分支，git checkout命令加上-b参数表示创建并切换；
+17.git branch命令查看当前分支；
+18.git checkout master 切换分支；
+19.git merge dev  命令用于合并指定分支到当前分支。
+20. git branch -d dev  删除dev分支；
+21.查看分支：git branch
+
+创建分支：git branch <name>
+
+切换分支：git checkout <name>
+
+创建+切换分支：git checkout -b <name>
+
+合并某分支到当前分支：git merge <name>
+
+删除分支：git branch -d <name>
+22.当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。
+
+用git log --graph命令可以看到分支合并图。例：git log --graph --pretty=oneline --abbrev-commit；
